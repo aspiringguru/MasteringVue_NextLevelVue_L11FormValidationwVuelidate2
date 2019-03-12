@@ -14,7 +14,19 @@
       </template>
 
       <h3>Name & describe your event</h3>
-      <BaseInput label="Title" v-model="event.title" type="text" placeholder="Title" class="field"/>
+      <BaseInput
+        label="Title"
+        v-model="event.title"
+        type="text"
+        placeholder="Title"
+        class="field"
+        :class="{ error: $v.event.title.$error }"
+        @blur="$v.event.title.$touch()"
+      />
+
+      <template v-if="$v.event.title.$error">
+        <p v-if="!$v.event.title.required" class="errorMessage">Title is required</p>
+      </template>
 
       <BaseInput
         label="Description"

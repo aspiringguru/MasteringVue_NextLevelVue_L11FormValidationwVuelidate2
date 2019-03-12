@@ -40,7 +40,18 @@
         <datepicker v-model="event.date" placeholder="Select a date"/>
       </div>
 
-      <BaseSelect label="Select a time" :options="times" v-model="event.time" class="field"/>
+      <BaseSelect
+        label="Select a time"
+        :options="times"
+        v-model="event.time"
+        class="field"
+        :class="{ error: $v.event.time.$error }"
+        @blur="$v.event.time.$touch()"
+      />
+
+      <template v-if="$v.event.time.$error">
+        <p v-if="!$v.event.time.required" class="errorMessage">Time is required</p>
+      </template>
 
       <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
     </form>

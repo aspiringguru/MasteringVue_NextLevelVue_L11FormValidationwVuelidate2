@@ -231,6 +231,42 @@
       "date": "",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 3026826,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "category": "housing",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "asd",
+      "description": "asd",
+      "location": "asd",
+      "date": "2019-03-05T23:45:00.000Z",
+      "time": "18:00",
+      "attendees": []
+    },
+    {
+      "id": 8107002,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "category": "housing",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "asd",
+      "description": "asd",
+      "location": "asd",
+      "date": "2019-03-20T23:45:00.000Z",
+      "time": "19:00",
+      "attendees": []
     }
   ]
 }

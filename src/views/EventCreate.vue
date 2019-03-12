@@ -6,11 +6,11 @@
         label="Select a category"
         :options="categories"
         v-model="event.category"
-        :class="$v.event.category.$error"
+        :class="{ error: $v.event.category.$error }"
         @blur="$v.event.category.$touch()"
       />
       <template v-if="$v.event.category.$error">
-        <p v-if="!$v.event.category.required" class="errorMessage">Category is required</p>
+        <p v-if="!$v.event.category.required" class="errorMessage">Category is required.</p>
       </template>
 
       <h3>Name & describe your event</h3>
@@ -25,7 +25,7 @@
       />
 
       <template v-if="$v.event.title.$error">
-        <p v-if="!$v.event.title.required" class="errorMessage">Title is required</p>
+        <p v-if="!$v.event.title.required" class="errorMessage">Title is required.</p>
       </template>
 
       <BaseInput
@@ -39,7 +39,7 @@
       />
 
       <template v-if="$v.event.description.$error">
-        <p v-if="!$v.event.description.required" class="errorMessage">Description is required</p>
+        <p v-if="!$v.event.description.required" class="errorMessage">Description is required.</p>
       </template>
 
       <h3>Where is your event?</h3>
@@ -54,7 +54,7 @@
       />
 
       <template v-if="$v.event.location.$error">
-        <p v-if="!$v.event.location.required" class="errorMessage">Location is required</p>
+        <p v-if="!$v.event.location.required" class="errorMessage">Location is required.</p>
       </template>
 
       <h3>When is your event?</h3>
@@ -65,14 +65,14 @@
           v-model="event.date"
           placeholder="Select a date"
           :input-class="{ error: $v.event.date.$error }"
-          @opened="$v.event.date.touch()"
+          @opened="$v.event.date.$touch()"
         />
       </div>
 
       <!-- nb: L@10:31 refers to https://www.npmjs.com/package/vuejs-datepicker -->
       <!-- used @opened instead of @closed because errors w @closed when used w datepicker?? -->
       <template v-if="$v.event.date.$error">
-        <p v-if="!$v.event.date.required" class="errorMessage">Date is required</p>
+        <p v-if="!$v.event.date.required" class="errorMessage">Date is required.</p>
       </template>
 
       <BaseSelect
@@ -85,11 +85,11 @@
       />
 
       <template v-if="$v.event.time.$error">
-        <p v-if="!$v.event.time.required" class="errorMessage">Time is required</p>
+        <p v-if="!$v.event.time.required" class="errorMessage">Time is required.</p>
       </template>
 
       <BaseButton type="submit" buttonClass="-fill-gradient" :disabled="$v.$anyError">Submit</BaseButton>
-      <p v-if="$v.anyError" class="errorMessage">Please fill out the required field(s).</p>
+      <p v-if="$v.$anyError" class="errorMessage">Please fill out the required field(s).</p>
     </form>
   </div>
 </template>
@@ -128,7 +128,7 @@ export default {
   methods: {
     createEvent() {
       //submits the form
-      this.$v.touch()
+      this.$v.$touch()
       //makes every field in form 'dirty'
       if (!this.$v.$invalid) {
         //if form is not invalid, submit
